@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #FF3B2F;
+  --bg: #000000;
+  --border: #330000;
+  --text: #ff6b5b;
+  --bright: #ff9f97;
+  --dim: #660000;
+  --sidebar-width: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: #000000;
+  color: var(--text);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  line-height: 1.8;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── Custom Cursor ─────────────────────────────────────── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  image-rendering: pixelated;
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+.cursor-outline {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, width 0.1s ease, height 0.1s ease;
+  image-rendering: pixelated;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  image-rendering: pixelated;
+}
+
+/* ─── CRT Scanlines ─────────────────────────────────────── */
+.crt-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+}
+
+.crt-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.crt-flicker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9996;
+  animation: flicker 0.15s infinite;
+  opacity: 0;
+}
+
+@keyframes flicker {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.02; }
+  10%  { opacity: 0; }
+  15%  { opacity: 0.015; }
+  20%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Moving scanline */
+.crt-scan-moving {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 59, 47, 0.03),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 9995;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-40px); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ─── Cursor Blink ──────────────────────────────────────── */
+.cursor-blink {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: var(--primary);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Glitch ────────────────────────────────────────────── */
+@keyframes glitch-clip-1 {
+  0%   { clip-path: inset(10% 0 85% 0); transform: translate(-4px, 0); }
+  25%  { clip-path: inset(40% 0 43% 0); transform: translate(4px, 0); }
+  50%  { clip-path: inset(80% 0 5% 0);  transform: translate(-4px, 0); }
+  75%  { clip-path: inset(25% 0 58% 0); transform: translate(4px, 0); }
+  100% { clip-path: inset(10% 0 85% 0); transform: translate(-4px, 0); }
+}
+
+@keyframes glitch-clip-2 {
+  0%   { clip-path: inset(70% 0 10% 0); transform: translate(4px, 0);  }
+  25%  { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+  50%  { clip-path: inset(55% 0 30% 0); transform: translate(4px, 0);  }
+  75%  { clip-path: inset(5% 0 80% 0);  transform: translate(-4px, 0); }
+  100% { clip-path: inset(70% 0 10% 0); transform: translate(4px, 0);  }
+}
+
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--primary);
+}
+
+.glitch-text::before {
+  color: #00ffff;
+  animation: glitch-clip-1 3s infinite linear;
+  opacity: 0.7;
+}
+
+.glitch-text::after {
+  color: #ff00ff;
+  animation: glitch-clip-2 3s infinite linear;
+  animation-delay: 0.1s;
+  opacity: 0.7;
+}
+
+/* ─── Pixel Border ──────────────────────────────────────── */
+.pixel-border {
+  border: 2px solid var(--primary);
+  box-shadow:
+    0 0 0 1px #000,
+    0 0 8px rgba(255,59,47,0.3),
+    inset 0 0 8px rgba(255,59,47,0.05);
+  image-rendering: pixelated;
+}
+
+.pixel-border-dim {
+  border: 1px solid var(--border);
+  box-shadow: 0 0 4px rgba(255,59,47,0.1);
+}
+
+/* ─── Section common ────────────────────────────────────── */
+.section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: var(--primary);
+  text-shadow:
+    0 0 10px rgba(255,59,47,0.8),
+    0 0 20px rgba(255,59,47,0.4);
+  letter-spacing: 2px;
+}
+
+.section-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 1px;
+}
+
+/* ─── Skill Bar ─────────────────────────────────────────── */
+.skill-bar-track {
+  height: 8px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--primary);
+  box-shadow: 0 0 6px rgba(255,59,47,0.6);
+  transition: width 1.2s ease;
+  image-rendering: pixelated;
+}
+
+/* ─── Pixel noise / static effect ─────────────────────── */
+@keyframes noise {
+  0%   { background-position: 0% 0%; }
+  10%  { background-position: -5% -10%; }
+  20%  { background-position: -15% 5%; }
+  30%  { background-position: 7% -25%; }
+  40%  { background-position: 20% 25%; }
+  50%  { background-position: -25% 10%; }
+  60%  { background-position: 15% 5%; }
+  70%  { background-position: 0% 15%; }
+  80%  { background-position: 25% 35%; }
+  90%  { background-position: -10% 10%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* ─── Glow text ─────────────────────────────────────────── */
+.glow-red {
+  color: var(--primary);
+  text-shadow:
+    0 0 5px var(--primary),
+    0 0 15px rgba(255,59,47,0.6),
+    0 0 30px rgba(255,59,47,0.3);
+}
+
+/* ─── RTL Support ───────────────────────────────────────── */
+[dir="rtl"] .sidebar-left {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+[dir="rtl"] .main-content {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+
+/* ─── Pixel button ──────────────────────────────────────── */
+.pixel-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  padding: 10px 16px;
+  cursor: none;
+  transition: all 0.1s;
+  letter-spacing: 1px;
+  image-rendering: pixelated;
+  box-shadow: 0 0 8px rgba(255,59,47,0.3);
+  text-transform: uppercase;
+}
+
+.pixel-btn:hover {
+  background: var(--primary);
+  color: #000;
+  box-shadow:
+    0 0 12px rgba(255,59,47,0.8),
+    0 0 24px rgba(255,59,47,0.4),
+    inset 0 0 12px rgba(0,0,0,0.3);
+  transform: translate(-2px, -2px);
+}
+
+.pixel-btn:active {
+  transform: translate(0, 0);
+}
+
+/* ─── Tag chip ──────────────────────────────────────────── */
+.pixel-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: var(--primary);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  background: rgba(255,59,47,0.05);
+  letter-spacing: 1px;
+}
+
+/* ─── Input ─────────────────────────────────────────────── */
+.pixel-input {
+  width: 100%;
+  background: #000;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+  cursor: none;
+}
+
+.pixel-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(255,59,47,0.3);
+}
+
+.pixel-input::placeholder {
+  color: var(--border);
+}
