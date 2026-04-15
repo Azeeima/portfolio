@@ -35,7 +35,7 @@ export default function Blog() {
     <section
       id="blog"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px 120px' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px) 120px' }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
 

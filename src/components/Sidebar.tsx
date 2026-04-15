@@ -125,7 +125,7 @@ export default function Sidebar() {
       }}
     >
       {/* Logo mark */}
-      <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+      <div className="sidebar-logo" style={{ textAlign: 'center', marginBottom: '8px' }}>
         <div
           style={{
             fontFamily: "'Press Start 2P', monospace",
@@ -140,7 +140,7 @@ export default function Sidebar() {
       </div>
 
       {/* Divider */}
-      <div style={{ width: '40px', height: '1px', background: '#330000', margin: '4px 0 12px' }} />
+      <div className="sidebar-divider" style={{ width: '40px', height: '1px', background: '#330000', margin: '4px 0 12px' }} />
 
       {/* Nav icons */}
       <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
@@ -176,6 +176,7 @@ export default function Sidebar() {
               {isActive && (
                 <span
                   aria-hidden
+                  className="sidebar-active-ind"
                   style={{
                     position: 'absolute',
                     [isRTL ? 'right' : 'left']: '-1px',
@@ -196,7 +197,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Divider */}
-      <div style={{ width: '40px', height: '1px', background: '#330000', margin: '12px 0 8px' }} />
+      <div className="sidebar-divider" style={{ width: '40px', height: '1px', background: '#330000', margin: '12px 0 8px' }} />
 
       {/* Language toggle */}
       <button

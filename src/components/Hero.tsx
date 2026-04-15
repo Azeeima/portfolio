@@ -205,7 +205,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 px-8 max-w-5xl mx-auto w-full">
+      <div className="relative z-10 px-4 sm:px-8 max-w-5xl mx-auto w-full">
 
         {/* Greeting */}
         <div className="mb-6" style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '11px', color: '#660000', letterSpacing: '3px' }}>

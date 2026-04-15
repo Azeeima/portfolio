@@ -26,7 +26,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px', display: 'flex', alignItems: 'center' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px)', display: 'flex', alignItems: 'center' }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
 
@@ -41,7 +41,7 @@ export default function About() {
           <div style={{ width: '60px', height: '2px', background: '#FF3B2F', marginTop: '16px', boxShadow: '0 0 8px rgba(255,59,47,0.6)' }} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'var(--grid-2col)', gap: 'var(--grid-gap-xl)', alignItems: 'start' }}>
 
           {/* Bio */}
           <div>

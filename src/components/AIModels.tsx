@@ -57,7 +57,7 @@ export default function AIModels() {
     <section
       id="models"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px)' }}
     >
       <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
 
@@ -82,7 +82,7 @@ export default function AIModels() {
                 transition: `opacity 0.5s ease ${i * 0.15}s, transform 0.5s ease ${i * 0.15}s`,
               }}
             >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'var(--grid-2col)', gap: 'var(--grid-gap-lg)' }}>
 
                 {/* Left: Model info */}
                 <div>

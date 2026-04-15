@@ -26,7 +26,7 @@ export default function Projects() {
     <section
       id="work"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px)' }}
     >
       <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
 
@@ -38,7 +38,7 @@ export default function Projects() {
         </div>
 
         {/* Projects grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'var(--grid-2col)', gap: '2px' }}>
           {c.items.map((project, i) => {
             const isHov = hovered === project.id;
             return (

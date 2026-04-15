@@ -25,7 +25,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px)' }}
     >
       <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
 
@@ -37,7 +37,7 @@ export default function Skills() {
         </div>
 
         {/* Categories */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'var(--grid-3col)', gap: 'var(--grid-gap-lg)' }}>
           {c.categories.map((cat, ci) => (
             <div
               key={`${lang}-cat-${ci}`}

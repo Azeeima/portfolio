@@ -39,7 +39,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ minHeight: '100vh', padding: '80px 40px' }}
+      style={{ minHeight: '100vh', padding: 'var(--section-py) var(--section-px)' }}
     >
       <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
 
@@ -50,7 +50,7 @@ export default function Contact() {
           <div style={{ width: '60px', height: '2px', background: '#FF3B2F', marginTop: '16px', boxShadow: '0 0 8px rgba(255,59,47,0.6)' }} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'var(--grid-2col)', gap: 'var(--grid-gap-xl)' }}>
 
           {/* Left: info */}
           <div
@@ -144,7 +144,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} dir={isRTL ? 'rtl' : 'ltr'}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'var(--form-2col)', gap: '10px', marginBottom: '10px' }}>
                   <div>
                     <label style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '9px', color: '#330000', display: 'block', marginBottom: '4px' }}>
                       {c.fields.name}

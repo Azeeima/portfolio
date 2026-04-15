@@ -364,3 +364,91 @@ body {
 .pixel-input::placeholder {
   color: var(--border);
 }
+
+/* ─── Responsive Layout Variables ──────────────────────── */
+:root {
+  --section-px: 40px;
+  --section-py: 80px;
+  --grid-2col: 1fr 1fr;
+  --grid-3col: repeat(3, 1fr);
+  --grid-gap-xl: 48px;
+  --grid-gap-lg: 24px;
+  --form-2col: 1fr 1fr;
+  --mob-nav-h: 0px;
+}
+
+/* ─── Tablet (≤ 1024px) ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --section-px: 32px;
+    --grid-3col: repeat(2, 1fr);
+  }
+}
+
+/* ─── Mobile (≤ 640px) ──────────────────────────────────── */
+@media (max-width: 640px) {
+  :root {
+    --sidebar-width: 0px;
+    --section-px: 20px;
+    --section-py: 60px;
+    --grid-2col: 1fr;
+    --grid-3col: 1fr;
+    --grid-gap-xl: 28px;
+    --grid-gap-lg: 16px;
+    --form-2col: 1fr;
+    --mob-nav-h: 56px;
+  }
+
+  /* Sidebar collapses into a bottom navigation bar */
+  .sidebar-left {
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 56px !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    padding: 0 8px !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-top: 1px solid #330000 !important;
+    box-shadow: 0 -4px 20px rgba(255, 59, 47, 0.08) !important;
+  }
+  .sidebar-logo,
+  .sidebar-divider {
+    display: none !important;
+  }
+  .sidebar-left nav {
+    flex: none !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+    align-items: center !important;
+  }
+  /* Active indicator becomes a horizontal underline */
+  .sidebar-active-ind {
+    top: auto !important;
+    bottom: -4px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: 16px !important;
+    height: 3px !important;
+  }
+
+  /* Main content: no side margin, bottom clearance for nav bar */
+  #main-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: var(--mob-nav-h);
+  }
+
+  /* Footer: stack vertically */
+  .footer-inner {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+    padding: 16px 20px !important;
+  }
+}

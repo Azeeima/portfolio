@@ -75,22 +75,23 @@ export default function Home() {
         <Blog />
 
         {/* Footer */}
-        <footer
-          style={{
-            borderTop: '1px solid #1a0000',
-            padding: '20px 40px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: '#000',
-          }}
-        >
-          <span style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '8px', color: '#330000' }}>
-            © 2024 AZEEIMA.PORTFOLIO — ALL RIGHTS RESERVED
-          </span>
-          <span style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '8px', color: '#330000' }}>
-            BUILT WITH NEXT.JS + CANVAS API
-          </span>
+        <footer style={{ borderTop: '1px solid #1a0000', background: '#000' }}>
+          <div
+            className="footer-inner"
+            style={{
+              padding: '20px 40px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <span style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '8px', color: '#330000' }}>
+              © 2024 AZEEIMA.PORTFOLIO — ALL RIGHTS RESERVED
+            </span>
+            <span style={{ fontFamily: "'Share Tech Mono', monospace", fontSize: '8px', color: '#330000' }}>
+              BUILT WITH NEXT.JS + CANVAS API
+            </span>
+          </div>
         </footer>
       </div>
     </>
